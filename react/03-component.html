@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+    // 1、我们可以使用函数定义了一个组件：
+
+    function HelloMessage(props) {
+        return <h1>Hello World!</h1>;
+    }
+    // 也可以使用 ES6 class 来定义一个组件:
+
+    class Name extends React.Component {
+        render() {
+            return <h1>网站名称：{this.props.name}</h1>;
+        }
+    }
+
+    // 注意，原生 HTML 元素名以小写字母开头，而自定义的 React 类名以大写字母开头，比如 HelloMessage 不能写成 helloMessage。
+    // 除此之外还需要注意组件类只能包含一个顶层标签，否则也会报错。
+
+    function App() {
+        return (
+            <div>
+                <Name name="教程" />
+                <HelloMessage />
+            </div>
+        );
+    }
+
+    ReactDOM.render(
+        <App />,
+        document.getElementById('example')
+    );
+</script>
+
+</body>
+</html>
