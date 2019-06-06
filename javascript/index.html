@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Foo() {
+        };
+        var f1 = new Foo();
+
+        var f2 = {"name":"haha"}
+
+        /**
+         prototype、__proto__与constructor
+         ①__proto__和constructor属性是对象所独有的；
+         ② prototype属性是函数所独有的。
+         但是由于JS中函数也是一种对象，所以函数也拥有__proto__和constructor属性，这点是致使我们产生困惑的很大原因之一。
+         所以：
+         对象属性：__proto__、constructor
+         函数属性：__proto__、constructor、prototype
+
+         1、__proto__: 这个属性是实例对象的属性，每个实例对象都有一个__proto__属性，这个属性指向该实例的构造函数的原型对象（prototype）。
+         即：f1.__proto__ === f1.__proto__.constructor.prototype
+
+         当访问一个对象的属性时，如果该对象内部不存在这个属性，那么就会去它的__proto__属性所指向的那个对象（父对象）里找，一直找，
+         直到__proto__属性的终点null，然后返回undefined，通过__proto__属性将对象连接起来的这条链路即我们所谓的原型链。
+
+         2、constructor属性的含义就是指向该对象的构造函数，所有函数（此时看成对象了）最终的构造函数都指向Function。
+
+         3、prototype属性的作用就是让该函数所实例化的对象们都可以找到公用的属性和方法，即f1.__proto__ === Foo.prototype。
+
+
+
+
+
+         */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

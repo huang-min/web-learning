@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function学习</title>
+    <script>
+
+
+
+    </script>
+</head>
+<body>
+在Javascript中，Function是一种对象。Function对象中的this指向决定于函数被调用的方式。使用apply，call 与 bind 均可以改变函数对象中this的指向，在说区别之前还是先总结一下三者的相似之处：
+1、都是用来改变函数的this对象的指向的。
+2、第一个参数都是this要指向的对象。
+3、都可以利用后续参数传参。
+
+call方法:
+语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]])
+定义：调用一个对象的一个方法，以另一个对象替换当前对象。
+说明：call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。
+如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。
+
+apply:
+语法：apply(thisObj,数组参数）
+定义：应用某一个对象的一个方法，用另一个对象替换当前对象
+说明：如果参数不是数组类型的，则会报一个TypeError错误。
+
+bind:
+在EcmaScript5中扩展了叫bind的方法（IE6,7,8不支持），bind与call很相似,，例如，可接受的参数都分为两部分，且第一个参数都是作为执行时函数上下文中的this的对象。不同点有两个：
+①bind的返回值是函数;②后面的参数的使用也有区别;
+先看例子一：
+
+function add(a, b) {
+alert(a + b);
+}
+function sub(a, b) {
+alert(a - b);
+}
+对于，call，可以这么用：
+add.call(sub,3,1);结果为4
+
+对于，apply，可以这么用；
+add.apply(sub,[3,1]);结果为4
+
+对于，bind，可以这么用:
+add.bind(sub)(3,1)；结果为4
+
+
+可以看到输出结果都一样，但是传参用法不一样；
+
+再看例子二：
+
+复制代码
+function jone(name,age,work){
+this.name=name;
+this.age=age;
+this.work=work;
+this.say=function(msg){
+alert(msg+"，我叫"+this.name+"，我今年"+this.age+"岁，我是"+this.work)
+}
+}
+var jack={
+name:"jack",
+age:'24',
+work:"学生"
+}
+var pet=new jone();
+
+pet.say.apply(jack,["欢迎您"])
+console.log(this.name)
+复制代码
+对于call，需要这样：
+pet.say.call(jack,"欢迎您！")
+
+对于apply，需要这样：
+pet.say.apply(jack,["欢迎您!"])
+
+对于bind，需要这样：
+pet.say.bind(jack,"欢迎您")()
+
+此时输出console.log(this.name)，发现this.name为jack，this上下文已经发生改变了；
+
+对于bind，来看一个demo
+
+See the Pen YGLBxG by jone (@jonechen) on CodePen.
+
+附上bind兼容IE以下代码
+
+复制代码
+// 兼容IE8以下
+if (!Function.prototype.bind) {
+Function.prototype.bind = function (context) {
+var self = this;
+var args = [].slice.call(arguments);
+return function () {
+self.apply(context, args.slice(1));
+}
+}
+}
+// 等同于
+/*
+if (!Function.prototype.bind) {
+Function.prototype.bind = function (context) {
+var self = this;
+var args = arguments;
+return function () {
+self.apply(context, Array.prototype.slice.call(args, 1))
+}
+}
+}
+*/
+</body>
+</html>

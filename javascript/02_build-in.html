@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>build-in内置函数或对象</title>
+    <script>
+
+
+    </script>
+</head>
+<body>
+<h1>函数</h1>
+Global不能直接访问
+Arguments仅在函数调用时由JS引擎创建
+Number.__proto__ === Function.prototype  // true
+Boolean.__proto__ === Function.prototype // true
+String.__proto__ === Function.prototype  // true
+Object.__proto__ === Function.prototype  // true
+Function.__proto__ === Function.prototype // true
+Array.__proto__ === Function.prototype   // true
+RegExp.__proto__ === Function.prototype  // true
+Error.__proto__ === Function.prototype   // true
+Date.__proto__ === Function.prototype    // true
+<h1>对象</h1>
+Math.__proto__ === Object.prototype  // true
+JSON.__proto__ === Object.prototype  // true
+
+<h1>自定义函数</h1>
+// 函数声明
+function Person() {}
+// 函数表达式
+var Man = function() {}
+Person.__proto__ === Function.prototype // true
+Man.__proto__ === Function.prototype    // true
+
+这说明所有的函数都来自于Function.prototype，甚至包括根函数Object及Function自身，都继承了Function.prototype的属性及方法。
+如length、call、apply、bind（ES5）。
+
+
+</body>
+</html>
