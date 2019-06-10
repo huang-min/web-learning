@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>script标签</title>
+
+    <script>
+        alert("代码直接写在HTML页面中")
+
+        window.onload = function () {
+            alert("完成时执行！！")
+        }
+    </script>
+    <script src="lib/01_script2.js" async="async"></script>
+    <script src="lib/01_script3.js" defer="defer"></script>
+    <script src="lib/01_script.js"></script>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>属性</th>
+            <th>值</th>
+            <th>描述</th>
+            <th>是否必须</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>type</td>
+            <td>MIME-type</td>
+            <td>指示脚本的 MIME 类型</td>
+            <td>必须</td>
+        </tr>
+        <tr>
+            <td>charset</td>
+            <td>charset</td>
+            <td>规定异步执行脚本（仅适用于外部脚本）。</td>
+            <td>非必须</td>
+        </tr>
+        <tr>
+            <td>src</td>
+            <td>URL</td>
+            <td>规定外部脚本文件的 URL</td>
+            <td>非必须</td>
+        </tr>
+        <tr>
+            <td>async</td>
+            <td>async</td>
+            <td>规定异步执行脚本（仅适用于外部脚本）。</td>
+            <td>非必须</td>
+        </tr>
+        <tr>
+            <td>defer</td>
+            <td>defer</td>
+            <td>规定是否对脚本执行进行延迟，直到页面加载为止</td>
+            <td>非必须</td>
+        </tr>
+        <tr>
+            <td>language</td>
+            <td>script</td>
+            <td>不赞成使用。规定脚本语言。请使用 type 属性代替它</td>
+            <td>非必须</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    alert("页面加载完成")
+</script>
