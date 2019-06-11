@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>React State!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<div id="example2"></div>
+<script type="text/babel">
+    class LikeButton extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {liked: false};
+
+            this.handleClick = this.handleClick.bind(this);
+            // 把组件中的this绑定到handleClick方法中，这样就会保持this一致。
+            // 否则handleClick会报的this.setState错误，或者利用箭头函数
+        }
+
+        handleClick() {
+            this.setState({
+                liked: !this.state.liked
+            });
+        }
+        render() {
+            var text = this.state.liked ? '喜欢' : '不喜欢';
+            return (
+                <p onClick={this.handleClick}>
+                    你<b>{text}</b>我。点我切换状态。
+                </p>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <LikeButton />,
+        document.getElementById('example')
+    );
+
+    /********************利用箭头函数*********************/
+
+    class LikeButton2 extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {liked: false};
+        }
+
+        handleClick = () => { //利用箭头函数
+            this.setState({
+                liked: !this.state.liked
+            })
+        };
+        render() {
+            var text = this.state.liked ? '喜欢' : '不喜欢';
+            return (
+                <p onClick={this.handleClick}>
+                    你<b>{text}</b>我。点我切换状态。
+                </p>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <LikeButton2 />,
+        document.getElementById('example')
+    );
+</script>
+
+</body>
+</html>

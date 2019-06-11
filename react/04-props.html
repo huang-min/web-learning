@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>React State!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+    function Blog(props) {
+        return <h1>{props.name}网站地址：{props.url}</h1>;
+    }
+
+    // 默认属性
+    Blog.defaultProps = {
+        name: 'huangmin'
+    };
+
+    class Github extends React.Component {
+        render() {
+            return <h1>网站地址：{this.props.url}</h1>;
+        }
+    }
+
+    // 传递属性值
+    function App() {
+        return (
+            <div>
+                <Blog url="https://blog.mindasoft.com" />
+                <Github url="https://github.com/huang-min"/>
+            </div>
+        );
+    }
+
+    ReactDOM.render(
+        <App />,
+        document.getElementById('example')
+    );
+</script>
+
+</body>
+</html>

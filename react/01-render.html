@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<div id="example2"></div>
+<script type="text/babel">
+    // 直接渲染
+    ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+    );
+
+    // 更新渲染
+    function tick() {
+        const element = (
+            <div>
+                <h1>Hello, world!</h1>
+                <h2>现在是 {new Date().toLocaleTimeString()}.</h2>
+            </div>
+        );
+        ReactDOM.render(
+            element,
+            document.getElementById('example')
+        );
+    }
+    // 每秒更新一次
+    setInterval(tick, 1000);
+
+
+    // 用 ES6 类的写法，创建一个 Github 的组件
+    class Github extends React.Component {
+        render() {
+            return <h1>网站地址：https://github.com/huang-min</h1>;
+        }
+    }
+    //渲染Github组件
+    ReactDOM.render(
+        <Github/>,
+        document.getElementById('example2')
+    );
+</script>
+
+</body>
+</html>
