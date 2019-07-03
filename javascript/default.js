@@ -12,7 +12,7 @@
         //     query: 'name=bigbear&memo=helloworld',
         // }
         /**
-         * 获取查询参数
+         * 获取查询参数字符串
          * @returns {string}
          */
         getQueryString:function () {
@@ -20,9 +20,9 @@
         },
         /**
          * 从指定链接${querystr}中获取 key为${name}的value
-         * @param querystr
-         * @param name
-         * @returns {null}
+         * @param querystr 可选,默认当前URL的queryStr.查询参数字符串
+         * @param name 必填,参数的键
+         * @returns {null} 参数的值
          */
         getQueryData: function(querystr, name) {
             if(typeof name === "undefined"){
@@ -35,8 +35,8 @@
         },
         /**
          * 获取当前链接或指定链接${querystr}中 QueryString中全部参数key-value对象值
-         * @param querystr
-         * @returns {{}}
+         * @param querystr 可选,默认当前URL的queryStr. 参数字符串
+         * @returns {{}} 全部参数JSON对象
          */
         getQueryParams: function (querystr){
             var reg = new RegExp("([^&?]+=[^&]*)", "gi")
@@ -53,47 +53,42 @@
             return params;
         },
         /**
-         * 对指定URL添加参数
-         * @param url
-         * @param params
-         * @returns {*}
+         * 对指定URL添加一对参数
+         * @param url 选填。URL链接，默认为当前URL
+         * @param name 参数的键
+         * @param value 参数的值
+         * @returns {string} 添加参数后的URL
          */
-        addUrlParams:function (url,params){
+        addQueryData: function(url, name,value) {
+            if(typeof value === "undefined"){
+                value=name;name=url;url = (window.location.href||window.location).toString();
+            }
+            return this.mergeParams(url,{name:value})
+        },
+        /**
+         * 对指定URL添加参数对象
+         * @param url 选填。URL链接，默认为当前URL
+         * @param params 必填,所有添加的JSON对象
+         * @returns {string} 添加参数后的URL
+         */
+        addQueryParams:function (url,params){
             if(typeof params === "undefined"){
-                params = url
-                url = undefined
+                params = url;url = (window.location.href||window.location).toString();
             }
-            return this.getURLByPath(null,params,url)
+            return this.mergeParams(url,params)
         },
-        getURLByPath:function (path,params,url){
-            var _params = this.getQueryParams(url)
-            url = this.getURLWithoutParamByPath(path,url);
-            params = params||{};
-            url = this.mergeParams(url,_params,params);
-            return url;
-        },
-        getURLWithoutParamByPath:function (path,url){
-            if(url==null||typeof  url =="undefined")
-                url = (window.location.href||window.location).toString();
-            url = url.toString();
-            var i = url.indexOf('?')
-            url = i>0? url.substr(0,i):url;
-            url = path?url.replace(url.substr(url.lastIndexOf('/')+1) ,path):url;
-            return url;
-        },
-        mergeParams:function (url,_params,params){
-            for(var p in _params)
-            {
-                if(typeof params[p] =="undefined")
-                    params[p] = _params[p]
-            }
+        /**
+         * 合并参数,并默认添加_d=datetime的时间戳
+         * @param url 必填,URL链接
+         * @param params 必填,JSON对象参数
+         * @returns {string} 合并参数后的URL
+         */
+        mergeParams:function (url,params){
             //会默认加一个时间戳
-            if(!this.getQueryData(url,"_d"))
-            {
-                params.d =(new Date()).getTime();
+            if(!this.getQueryData(url,"_d")){
+                params._d =(new Date()).getTime();
             }
-            for(var p in params)
-            {
+            for(var p in params){
                 if(params[p]) {
                     url += url.indexOf('?') > 0 ? '&' : '?';
                     url += p + "=" + params[p];
