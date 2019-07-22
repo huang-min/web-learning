@@ -120,7 +120,41 @@
                 ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString() + ";path=" + path);
             return;
         },
-
+        /**
+         * 格式化版本号，可用来比较。
+         * 支持:1.5.6.322
+         * 前3位为大版本号，最后一位是小版本
+         * @param version
+         * @returns {string}
+         */
+        formatVersion:function (version) {
+            var verArray = version.toString().split('.');
+            var num_place = ["", "0", "00", "000", "0000"].reverse();
+            for (var i = 0; i < verArray.length; i++) {
+                verArray[i] = num_place[verArray[i].length] + verArray[i];
+            }
+            return verArray.join('');
+        },
+        /**
+         * 版本号比较
+         * currVersion > targetVerison 返回1，
+         * currVersion < targetVerison 返回-1
+         * currVersion = targetVerison 返回0
+         * @param currVersion
+         * @param targetVerison
+         * @returns {number}
+         */
+        compareVersion:function (currVersion, targetVerison) {
+            currVersion = this.formatVersion(currVersion)
+            targetVerison = this.formatVersion(targetVerison)
+            if(currVersion > targetVerison){
+                return 1;
+            }else if(currVersion < targetVerison){
+                return -1;
+            }else {
+                return 0;
+            }
+        }
     }
 }();
 
