@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="maincontent">
+
+
+    <h1>HTML 4.01 快速参考</h1>
+
+    <div >
+        <p><strong>HTML 4.01 快速参考</strong></p>
+    </div>
+
+    <div>
+        <h2>HTML Basic Document</h2>
+        <pre>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Document name goes here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Visible text goes here
+&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+    </div>
+
+
+    <div>
+        <h2>Text Elements</h2>
+        <pre>
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;br&gt; (line break)
+&lt;hr&gt; (horizontal rule)
+&lt;pre&gt;This text is preformatted&lt;/pre&gt;</pre>
+        <p>This is a paragraph</p>
+        <br> (line break)
+        <hr> (horizontal rule)
+        <pre>This text is preformatted</pre>
+    </div>
+
+
+    <div>
+        <h2>Logical Styles</h2>
+        <pre>
+&lt;em&gt;This text is emphasized&lt;/em&gt;
+&lt;strong&gt;This text is strong&lt;/strong&gt;
+&lt;code&gt;This is some computer code&lt;/code&gt;
+        </pre>
+        <em>This text is emphasized</em>
+        <strong>This text is strong</strong>
+        <code>This is some computer code</code>
+    </div>
+
+
+    <div>
+        <h2>Physical Styles</h2>
+        <pre>
+&lt;b&gt;This text is bold&lt;/b&gt;
+&lt;i&gt;This text is italic&lt;/i&gt;
+        </pre>
+        <b>This text is bold</b>
+        <i>This text is italic</i>
+    </div>
+
+    <div>
+        <h2>Links, Anchors, and Image Elements</h2>
+        <pre>
+&lt;a href="http://www.example.com/"&gt;This is a Link&lt;/a&gt;
+&lt;a href="http://www.example.com/"&gt;&lt;img src="URL" alt="Alternate Text"&gt;&lt;/a&gt;
+&lt;a href="mailto:webmaster@example.com"&gt;Send e-mail&lt;/a&gt;A named anchor:
+&lt;a name="tips"&gt;Useful Tips Section&lt;/a&gt;
+&lt;a href="#tips"&gt;Jump to the Useful Tips Section&lt;/a&gt;
+        </pre>
+        <a href="http://www.example.com/">This is a Link</a>
+        <a href="http://www.example.com/"><img src="URL" alt="Alternate Text"></a>
+        <a href="mailto:webmaster@example.com">Send e-mail</a>A named anchor:
+        <a name="tips">Useful Tips Section</a>
+        <a href="#tips">Jump to the Useful Tips Section</a>
+    </div>
+
+    <div>
+        <h2>Unordered list</h2>
+        <pre>&lt;ul&gt;
+        &lt;li&gt;First item&lt;/li&gt;
+        &lt;li&gt;Next item&lt;/li&gt;
+        &lt;/ul&gt;</pre>
+        <ul>
+            <li>First item</li>
+            <li>Next item</li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Ordered list</h2>
+        <pre>
+&lt;ol&gt;
+&lt;li&gt;First item&lt;/li&gt;
+&lt;li&gt;Next item&lt;/li&gt;
+&lt;/ol&gt;
+        </pre>
+        <ol>
+            <li>First item</li>
+            <li>Next item</li>
+        </ol>
+    </div>
+
+    <div>
+        <h2>Definition list</h2>
+        <pre>
+&lt;dl&gt;
+&lt;dt&gt;First term&lt;/dt&gt;
+&lt;dd&gt;Definition&lt;/dd&gt;
+&lt;dt&gt;Next term&lt;/dt&gt;
+&lt;dd&gt;Definition&lt;/dd&gt;
+&lt;/dl&gt;
+        </pre>
+        <dl>
+            <dt>First term</dt>
+            <dd>Definition</dd>
+            <dt>Next term</dt>
+            <dd>Definition</dd>
+        </dl>
+    </div>
+
+
+    <div>
+        <h2>Tables</h2>
+        <pre>
+&lt;table border="1"&gt;
+&lt;tr&gt;
+&lt;th&gt;someheader&lt;/th&gt;
+&lt;th&gt;someheader&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;sometext&lt;/td&gt;
+&lt;td&gt;sometext&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+        </pre>
+        <table border="1">
+            <tr>
+                <th>someheader</th>
+                <th>someheader</th>
+            </tr>
+            <tr>
+                <td>sometext</td>
+                <td>sometext</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h2>Frames</h2>
+        <pre>
+&lt;frameset cols="25%,75%"&gt;
+&nbsp; &lt;frame src="page1.htm"&gt;
+&nbsp; &lt;frame src="page2.htm"&gt;
+&lt;/frameset&gt;
+        </pre>
+        <frameset cols="25%,75%">
+            <frame src="page1.htm">
+            <frame src="page2.htm">
+        </frameset>
+    </div>
+
+    <div>
+        <h2>Forms</h2>
+        <pre>
+&lt;form action="http://www.example.com/test.asp" method="post/get"&gt;
+&lt;input type="text" name="lastname"
+value="Nixon" size="30" maxlength="50"&gt;
+&lt;input type="password"&gt;
+&lt;input type="checkbox" checked="checked"&gt;
+&lt;input type="radio" checked="checked"&gt;
+&lt;input type="submit"&gt;
+&lt;input type="reset"&gt;
+&lt;input type="hidden"&gt;
+&lt;select&gt;
+&lt;option&gt;Apples
+&lt;option selected&gt;Bananas
+&lt;option&gt;Cherries
+&lt;/select&gt;
+&lt;textarea name="Comment" rows="10"cols="20"&gt;&lt;/textarea&gt;
+&lt;/form&gt;
+        </pre>
+        <form action="http://www.example.com/test.asp" method="post/get">
+            <input type="text" name="lastname"
+                   value="Nixon" size="30" maxlength="50">
+            <input type="password">
+            <input type="checkbox" checked="checked">
+            <input type="radio" checked="checked">
+            <input type="submit">
+            <input type="reset">
+            <input type="hidden">
+            <select>
+                <option>Apples
+                <option selected>Bananas
+                <option>Cherries
+            </select>
+            <textarea name="Comment" rows="10" cols="20"></textarea>
+        </form>
+    </div>
+
+    <div>
+        <h2>Entities</h2>
+        <pre>
+&amp;lt; is the same as &lt;
+&amp;gt; is the same as &gt;
+&amp;#169; is the same as ©
+        </pre>
+        &lt; is the same as <
+        &gt; is the same as >
+        &#169; is the same as ©
+    </div>
+
+    <div>
+        <h2>Other Elements</h2>
+        <pre>
+&lt;!-- This is a comment --&gt;
+&lt;blockquote&gt;
+Text quoted from some source.
+&lt;/blockquote&gt;
+&lt;address&gt;
+Address 1&lt;br&gt;
+Address 2&lt;br&gt;
+City&lt;br&gt;
+&lt;/address&gt;
+        </pre>
+        <blockquote>
+            Text quoted from some source.
+        </blockquote>
+        <address>
+            Address 1<br>
+            Address 2<br>
+            City<br>
+        </address>
+    </div>
+
+</div>
+
+</body>
+</html>
