@@ -11,15 +11,7 @@
 
 <div id="example"></div>
 <script type="text/babel">
-    function Blog(props) {
-        return <h1>{props.name}网站地址：{props.url}</h1>;
-    }
-
-    // 默认属性
-    Blog.defaultProps = {
-        name: 'huangmin'
-    };
-
+    // 接收唯一带有数据的 “props”（代表属性）对象 ，决不能修改自身的 props
     class Github extends React.Component {
         render() {
             return <h1>网站地址：{this.props.url}</h1>;
@@ -27,13 +19,12 @@
     }
 
     // 传递属性值
-    function App() {
-        return (
-            <div>
-                <Blog url="https://blog.mindasoft.com" />
-                <Github url="https://github.com/huang-min"/>
-            </div>
-        );
+    class App extends React.Component {
+        render() {
+            return <div>
+                        <Github url="https://github.com/minbyte"/>
+                    </div>;
+        }
     }
 
     ReactDOM.render(

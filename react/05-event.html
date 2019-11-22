@@ -50,7 +50,7 @@
             this.state = {liked: false};
         }
 
-        handleClick = () => { //利用箭头函数
+        handleClick = () => { //利用箭头函数,不需要绑定
             this.setState({
                 liked: !this.state.liked
             })
@@ -67,7 +67,7 @@
 
     ReactDOM.render(
         <LikeButton2 />,
-        document.getElementById('example')
+        document.getElementById('example2')
     );
 </script>
 

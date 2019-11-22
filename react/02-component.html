@@ -10,33 +10,33 @@
 <body>
 
 <div id="example"></div>
-<script type="text/babel">
-    // 1、我们可以使用函数定义了一个组件：
-    function Blog() {
-        return <h1>网站地址：https://blog.mindasoft.com</h1>;
-    }
 
-    // 也可以使用 ES6 class 来定义一个组件:
+<script type="text/babel">
+    // 用 ES6类的写法以及JSX，创建一个 Github 的组件
     class Github extends React.Component {
         render() {
-            return <h1>网站地址：https://github.com/huang-min</h1>;
+            return <h1>网站地址：https://github.com/minbyte</h1>;
+        }
+    }
+    //创建一个 Gitee 的组件
+    class Gitee extends React.Component {
+        render() {
+            return <h1>网站地址：https://gitee.com/minbyte</h1>;
         }
     }
 
-    // 用函数的方式创建复合组件
-    function App() {
-        return (
-            <div>
-                <Blog />
-                <Github />
-            </div>
-        );
+    class Git extends React.Component {
+        render() {
+            return <div>
+                        <Github/>
+                        <Gitee/>
+                    </div>;
+        }
     }
-    // 注意，原生 HTML 元素名以小写字母开头，而自定义的 React 类名以大写字母开头，比如 Blog 不能写成 blog。
-    // 除此之外还需要注意组件类只能包含一个顶层标签，否则也会报错。
 
+    //渲染Github组件
     ReactDOM.render(
-        <App />,
+        <Git/>,
         document.getElementById('example')
     );
 </script>
